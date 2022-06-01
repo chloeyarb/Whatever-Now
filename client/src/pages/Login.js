@@ -1,20 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function Login (props) {
     const [formState, setFormState] = useState({ email: '', password: ''});
     const [login, { error }] = useMutation(LOGIN);
-
-    // update state based on form input changes
-    const handleUpdate = (action) => {
-        const { name, value } = action.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        })
-    };
 
     // submit form
     const handleFormSubmit = async (action) => {
@@ -29,6 +21,15 @@ function Login (props) {
             console.log(error)
         }
     };
+    // update state based on form input changes
+    const handleUpdate = (action) => {
+        const { name, value } = action.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        })
+    };
+
 
     return (
       <div>
@@ -36,7 +37,7 @@ function Login (props) {
           <form onSubmit={handleFormSubmit}>
               <div className=''>
                   <label htmlFor="email">Email:</label>
-                  <input placeholder="email@iscool.com" name="email" type="email" id="email" onChange={handleUpdate}/>
+                  <input placeholder="Your email" name="email" type="email" id="email" onChange={handleUpdate}/>
               </div>
               <div className=''>
                   <label htmlFor="pwd">Password:</label>
