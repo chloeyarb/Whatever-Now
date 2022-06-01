@@ -22,6 +22,13 @@ const resolvers = {
           return Post.findOne({ username })
           .select('-__v -password')
           .populate('likes')
+        },
+        me: async (parent, args, context) => {
+          if (context.user) {
+              return User.findOne({ _id: context.user._id})
+              .select('-__v -password')
+              .populate('posts')
+          }
         }
     },
     Mutation: {
@@ -58,8 +65,8 @@ const resolvers = {
 
             throw new AuthenticationError('You must be logged in to like a post.')
         },
-        login: async (parent, { email, password}) => {
-          const user = await User.findOne({ email });
+        login: async (parent, { username, password}) => {
+          const user = await User.findOne({ username });
 
           if (!user) {
               throw new AuthenticationError('Invalid username!')

@@ -18,6 +18,7 @@ type Post {
 }
 
 type Query {
+    me: User
     users: [User]
     posts(username: String): [Post]
     user(username: String!): User
