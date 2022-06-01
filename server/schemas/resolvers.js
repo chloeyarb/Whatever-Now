@@ -4,7 +4,7 @@ const resolvers = {
     Query: {
         users: async () => {
           return User.find()
-          .select('-__v password')
+          .select('-__v -password')
           .populate('posts')
         },
         posts: async (parent, { username }) => {
@@ -37,7 +37,15 @@ const resolvers = {
           );
 
           return post;
+        },
+        like: async (parent, { userId, postId }) => {
+          return Post.findByIdAndUpdate(
+              {_id: postId},
+              { $addToSet: { likes: userId }},
+              { new: true }
+          )
         }
+        
     }
 }
 
