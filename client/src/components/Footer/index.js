@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <nav>
+    <div>
       <h2>WhateverNow</h2>
       <ul>
         <li>Home</li>
@@ -11,7 +11,7 @@ const Footer = () => {
         <li>Sign Up</li>
         <li>Logout</li>
       </ul>
-    </nav>
+    </div>
   );
 };
 

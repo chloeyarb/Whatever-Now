@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <nav>
+    <nav className="text-muted">
       <h2>WhateverNow</h2>
       <ul>
         <li>Home</li>
@@ -11,6 +11,7 @@ const Header = () => {
         <li>Sign Up</li>
         <li>Logout</li>
       </ul>
+      <button className="btn">hi</button>
     </nav>
   );
 };
