@@ -42,9 +42,6 @@ const Feed = () => {
             <Button variant="dark" type="submit" className="">
               Like
             </Button>
-            <Button variant="light" type="submit" className="">
-              React
-            </Button>
           </Card.Body>
         </Card>
         <br />
