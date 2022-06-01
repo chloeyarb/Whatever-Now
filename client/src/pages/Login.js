@@ -29,5 +29,30 @@ function Login (props) {
             console.log(error)
         }
     };
+
+    return (
+      <div>
+          <h2>Login</h2>
+          <form onSubmit={handleFormSubmit}>
+              <div className=''>
+                  <label htmlFor="email">Email:</label>
+                  <input placeholder="email@iscool.com" name="email" type="email" id="email" onChange={handleUpdate}/>
+              </div>
+              <div className=''>
+                  <label htmlFor="pwd">Password:</label>
+                  <input placeholder="******" name="pw" type="pw" id="pw" onChange={handleUpdate} /> 
+              </div>
+              {error ? (
+                  <div>
+                      <p> Login Failed </p>
+                  </div>
+              ) : null}
+              <div className=''>
+                  <button type="submit">Submit</button>
+              </div>
+          </form>
+      </div>
+    )
 }
 
+export default Login;
