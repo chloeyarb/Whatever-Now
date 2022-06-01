@@ -54,6 +54,17 @@ const resolvers = {
             throw new AuthenticationError('You must be logged in to post.')
 
         },
+        addComment: async (parent, { commentBody, postId }, context) => {
+          if (context.user) {
+              return Post.findOneAndUpdate(
+                  { _id: postId },
+                  { $push: { comments: { commentBody, username: context.user.username } } },
+                  { new: true }
+              )
+          }
+
+          throw new AuthenticationError('You must be logged in to comment.')
+        },
         like: async (parent, { postId }, context) => {
             if(context.user) {
                 return Post.findByIdAndUpdate(

@@ -15,6 +15,19 @@ type Post {
     createdAt: String
     likes: [ID]
     likeCount: Int
+    comments: [Comment]
+}
+
+type Comment {
+    _id: ID
+    username: String
+    commentBody: String
+    createdAt: String
+}
+
+type Auth {
+    token: ID!
+    user: User
 }
 
 type Query {
@@ -25,16 +38,12 @@ type Query {
     post(username: String!): Post
 }
 
-type Auth {
-    token: ID!
-    user: User
-}
-
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postText: String!): Post
+    addComment(commentBody: String!, postId: ID!): Post
     like(postId: ID!): Post
-    login(username: String!, password: String!): Auth 
+    login(username: String!, password: String!): Auth
 }
 `
 
