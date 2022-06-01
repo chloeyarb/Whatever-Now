@@ -7,7 +7,7 @@ const Home = () => {
         <div className='hero'>
             <div>
                 <h1 className='hero-title'>Welcome to WhateverNow</h1>
-                <p className='mission-statement'></p>
+                <p className='mission-statement'>Mission statement</p>
                 <img src={heropic} alt='hero-img'></img>
                 <div className="mb-2">
                     <Button variant="primary" size="lg">
