@@ -24,10 +24,16 @@ type Query {
     post(username: String!): Post
 }
 
+type Auth {
+    token: ID!
+    user: User
+}
+
 type Mutation {
-    addUser(username: String!, email: String!, password: String!): User
-    addPost(postText: String!, userId: ID!, username: String!): Post
-    like(postId: ID!, userId: ID!): Post
+    addUser(username: String!, email: String!, password: String!): Auth
+    addPost(postText: String!): Post
+    like(postId: ID!): Post
+    login(username: String!, password: String!): Auth 
 }
 `
 
