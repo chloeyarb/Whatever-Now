@@ -8,12 +8,16 @@
     "mongoose": "^6.3.5"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }

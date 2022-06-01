@@ -18,14 +18,14 @@ type Post {
 
 type Query {
     users: [User]
-    posts: [Post]
-    user(username: String): User
-    post(username: String): Post
+    posts(username: String): [Post]
+    user(username: String!): User
+    post(username: String!): Post
 }
 
 type Mutation {
     addUser(username: String!, email: String!, password: String!): User
-    addPost(postText: String!): Post
+    addPost(postText: String!, userId: ID!, username: String!): Post
 }
 `
 
