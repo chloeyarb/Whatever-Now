@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* Footer classes */
+
+.main-footer {
+  display: flex;
+  align-self: flex-end;
+}
+
+.iconStyle {
+  width: 50px;
+  height: 50px;
+  color: #282c34;
+  opacity: 0.5;
+}
+
+.iconStyle:hover {
+  opacity: 0.9;
+}
