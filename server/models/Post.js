@@ -38,6 +38,9 @@ const postSchema = new Schema(
             required: true,
         },
         comments: [commentSchema],
+        imgUrl: {
+            type: String,
+        },
         likes: [
             {
                 type: Schema.Types.ObjectId,
