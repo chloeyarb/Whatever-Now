@@ -98,20 +98,22 @@ const Home = () => {
 
           <>
             {/* Card with image top, text bottom */}
-            <Card className="mb-3 w-75 ">
+            {posts.map(post => (
+              <Card className="mb-3 w-75 " key={post._id}>
               <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  {post.postText}
                 </Card.Text>
                 <Button variant="dark" type="submit" className="">
                   Like
                 </Button>
               </Card.Body>
             </Card>
+            ))}
+            
             <br />
-            {/* Card with text top, image bottom */}
+            {/* Card with text top, image bottom
             <Card className="mb-3 w-75">
               <Card.Body>
                 <Button variant="dark" type="submit" className="">
@@ -123,7 +125,7 @@ const Home = () => {
                 </Card.Text>
               </Card.Body>
               <Card.Img variant="bottom" src="holder.js/100px180" />
-            </Card>
+            </Card> */}
           </>
         </div>
       )}
