@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-import { Container, ThemeProvider } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 const Home = () => {
   return (
     <Container fluid="md">
@@ -57,7 +57,7 @@ const Home = () => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="dark" type="submit" className="">
+              <Button variant="warning" type="submit" className="">
                 Like
               </Button>
             </Card.Body>
