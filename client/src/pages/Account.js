@@ -14,6 +14,14 @@ const Account = () => {
                     Account settings
                 </h1>
             </div>
+
+            <Button
+                variant="dark"
+                type="submit"
+                className="w-25 fs-5 fw-bold mt-3 mb-5 button-color"
+            >
+                Publish Post
+            </Button>
         </div>
     );
 }
