@@ -10,6 +10,7 @@ const Home = () => {
       <Card className="bg-dark text-white">
         <Card.Img src="/img/HI.png" alt="Card image" />
         <Card.ImgOverlay>
+          {/* STYLE WELCOME MESSAGE + ADD BUTTONS */}
           <Card.Text className="hero-text">
             This is a wider card with supporting text below as a natural lead-in
             to additional content. This content is a little bit longer.
