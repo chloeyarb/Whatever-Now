@@ -6,17 +6,50 @@ import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_POSTS } from "../utils/queries";
+import { ADD_POST } from "../utils/mutations";
 import auth from "../utils/auth";
 
 import { Container, Row, Col } from "react-bootstrap";
 const Home = () => {
 
   const uploader = new Uploader({ apiKey: "free" });
-  const [pictureUrl, setPictureUrl] = useState('');
+  const options = {
+    styles: {
+      colors: {
+        primary: "#212529"
+      }
+    }
+  }
+
+  const [imgUrl, setImgUrl] = useState('');
+  const [postText, setPostText] = useState('');
+
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
   console.log(posts);
+
   const loggedIn = auth.LoggedIn();
+
+  const [addPost, { error }] = useMutation(ADD_POST);
+
+  const handleChange = (e) => {
+    setPostText(e.target.value);
+  }
+
+  const handlePostSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await addPost({
+        variables: { postText, imgUrl}
+      });
+
+      setPostText('');
+      setImgUrl('');
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
 
@@ -64,16 +97,20 @@ const Home = () => {
             </div>
           </div>
 
-          <Form>
+          <Form onSubmit={handlePostSubmit}>
             <Form.Group className="mb-3 w-50" controlId="formGroupPost">
               <Form.Control
                 type="post"
                 placeholder="Whatever you want to say..."
+                onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
               {/* <Form.Control type="file" placeholder="file" /> */}
-              <UploadButton uploader={uploader}>
+              <UploadButton
+              uploader={uploader}
+              options={options} 
+              onComplete={files => setImgUrl(files[0].fileUrl)}>
                 {({ onClick }) =>
                   <Button
                     variant="dark"
@@ -94,13 +131,16 @@ const Home = () => {
             >
               Publish Post
             </Button>
+            { error && <span>Something went wrong</span>}
           </Form>
 
           <>
+            {loading && (<div>loading....</div>)}
             {/* Card with image top, text bottom */}
             {posts.map(post => (
               <Card className="mb-3 w-75 " key={post._id}>
-              <Card.Img variant="top" src="holder.js/100px180" />
+                {post.imgUrl && <Card.Img variant="top" src={post.imgUrl} />}
+              
               <Card.Body>
                 <Card.Text>
                   {post.postText}
