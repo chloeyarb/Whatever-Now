@@ -41,8 +41,8 @@ function Login (props) {
                   <input placeholder="Your username" name="username" type="username" id="username" onChange={handleUpdate}/>
               </div>
               <div className=''>
-                  <label htmlFor="pwd">Password:</label>
-                  <input placeholder="******" name="pw" type="pw" id="pw" onChange={handleUpdate} /> 
+                  <label htmlFor="password">Password:</label>
+                  <input placeholder="******" name="password" type="password" id="pw" onChange={handleUpdate} /> 
               </div>
               {error ? (
                   <div>

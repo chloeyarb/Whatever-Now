@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_POSTS } from "../utils/queries";
 import auth from "../utils/auth";
 
@@ -14,6 +14,8 @@ const Home = () => {
   const uploader = new Uploader({ apiKey: "free" });
   const [pictureUrl, setPictureUrl] = useState('');
   const { loading, data } = useQuery(QUERY_POSTS);
+  const posts = data?.posts || [];
+  console.log(posts);
   const loggedIn = auth.LoggedIn();
 
   return (
