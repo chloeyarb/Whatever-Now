@@ -60,5 +60,15 @@
 } */
 
 .hero-text {
-  margin-top: 400px;
+  font-size: 40px;
+  margin-top: 30%;
+  margin-right: 30%;
+  
+  
 }
+
+.hero-img {
+  max-height: 1100px;
+  max-width: 1100px;
+}
+
