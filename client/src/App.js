@@ -2,16 +2,22 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Feed from "./pages/Feed";
+import Home from "./pages/Home";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header />
-      <Feed />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </Router>
   );
 }
 
