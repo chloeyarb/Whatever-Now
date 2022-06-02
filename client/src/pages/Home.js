@@ -2,18 +2,30 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+
 import { Container, Row, Col } from "react-bootstrap";
 const Home = () => {
   return (
     <Container fluid="md">
+      <Card className="bg-dark text-white">
+        <Card.Img src="/img/HI.png" alt="Card image" />
+        <Card.ImgOverlay>
+          {/* STYLE WELCOME MESSAGE + ADD BUTTONS */}
+          <Card.Text className="hero-text">
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+          <Card.Text>Last updated 3 mins ago</Card.Text>
+        </Card.ImgOverlay>
+      </Card>
       <Row className="justify-content-md-center">
         <Col md="auto">
           Welcome to Whatever Now
           <div>
             <img
-              src="/img/heropic.png"
+              src="/img/HI.png"
               className="img-fluid"
-              style={{ maxWidth: "30rem" }}
+              style={{ maxWidth: "80rem" }}
               alt="heropic"
             />
           </div>
