@@ -5,7 +5,7 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function Signup(props) {
-    const [formState, setFormState] = useState({email:'', password:''});
+    const [formState, setFormState] = useState({username:'', email:'', password:''});
     const [addUser] = useMutation(ADD_USER);
 
     // sign up form
@@ -13,9 +13,9 @@ function Signup(props) {
         action.preventDefault();
         const mmutationResponse = await addUser({
             variables: {
+                username: formState.username,
                 email: formState.email, 
-                password: formState.password,
-                username: formState.username
+                password: formState.password
             }
         })
         const token = mmutationResponse.data.addUser.token;
