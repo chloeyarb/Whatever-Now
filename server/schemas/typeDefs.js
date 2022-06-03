@@ -13,6 +13,7 @@ type Post {
     username: String
     postText: String
     createdAt: String
+    imgUrl: String
     likes: [ID]
     likeCount: Int
     comments: [Comment]
@@ -40,7 +41,7 @@ type Query {
 
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postText: String!): Post
+    addPost(postText: String!, imgUrl: String): Post
     addComment(commentBody: String!, postId: ID!): Post
     like(postId: ID!): Post
     login(username: String!, password: String!): Auth

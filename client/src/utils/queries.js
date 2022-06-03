@@ -9,6 +9,7 @@ export const QUERY_POSTS = gql`
             createdAt
             likes
             likeCount
+            imgUrl
             comments {
                 _id
                 username
@@ -27,7 +28,8 @@ export const QUERY_POST = gql`
             postText
             createdAt
             likes
-            likeCount 
+            likeCount
+            imgUrl
             comments {
                 _id
                 username

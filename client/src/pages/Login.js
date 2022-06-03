@@ -3,8 +3,8 @@ import { useMutation } from "@apollo/client";
 
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
 
 function Login(props) {
   const [formState, setFormState] = useState({ username: "", password: "" });
@@ -38,36 +38,36 @@ function Login(props) {
   return (
     <div>
       <h2>Login</h2>
-      <Form onSubmit={handleFormSubmit}>
-        <Form.Group className="mb-4 w-50" controlId="formGroupUsername">
-          <Form.Label htmlFor="usermane">Username:</Form.Label>
-          <Form.Control
+      <form onSubmit={handleFormSubmit}>
+        <div className="">
+          <label htmlFor="usermane">Username:</label>
+          <input
             placeholder="Your username"
             name="username"
             type="username"
             id="username"
             onChange={handleUpdate}
-          />{" "}
-        </Form.Group>
+          />
+        </div>
         <div className="">
-          <Form.Label htmlFor="pwd">Password:</Form.Label>
-          <Form.Control
+          <label htmlFor="password">Password:</label>
+          <input
             placeholder="******"
-            name="pw"
-            type="pw"
+            name="password"
+            type="password"
             id="pw"
             onChange={handleUpdate}
           />
         </div>
         {error ? (
           <div>
-            <p>Login Failed </p>
+            <p> Login Failed </p>
           </div>
         ) : null}
         <div className="">
-          <Button type="submit">Login</Button>
+          <button type="submit">Submit</button>
         </div>
-      </Form>
+      </form>
     </div>
   );
 }

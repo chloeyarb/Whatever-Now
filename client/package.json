@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.6.6",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
@@ -16,6 +17,8 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-uploader": "^1.8.0",
+    "uploader": "^1.45.14",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
