@@ -3,13 +3,13 @@
 .nav-back {
   background: #ffb627;
 }
-.Nav-list {
-  color: 333533;
+/* .Nav-list {
+  color: black;
 }
 
 .Nav-list:hover {
-  color: black;
-}
+  color: white;
+} */
 /* Footer classes */
 
 .main-footer {
