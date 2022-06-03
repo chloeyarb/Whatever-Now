@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+import { NavLink } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import { useQuery, useMutation } from "@apollo/client";
@@ -69,6 +70,8 @@ const Home = () => {
               </Card.Text>
               <Card.Text className="hero-button">
                 <Button
+                  as={NavLink}
+                  to="/signup"
                   variant="warning"
                   type="submit"
                   className="fw-bold fs-4  "
