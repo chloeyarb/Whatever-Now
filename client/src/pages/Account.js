@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 // need to render the page with and acoounts settings with change PFP, change password, and add birthday
 const Account = () => {
