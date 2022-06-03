@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+import { NavLink } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import { useQuery, useMutation } from "@apollo/client";
@@ -53,42 +54,53 @@ const Home = () => {
   };
 
   return (
-    <Container fluid="md">
+    <Container fluid="md" className="mt-4">
       {!loggedIn ? (
         <>
-          <Card className="bg-dark text-white">
-            <Card.Img src="/img/HI.png" alt="Card image" />
+          <Card className="bg-dark  text-white  ">
+            <Card.Img
+              src="/img/P.jpg"
+              alt="Card image"
+              className="hero-photo"
+            />
             <Card.ImgOverlay>
               {/* STYLE WELCOME MESSAGE + ADD BUTTONS */}
-              <Card.Text className="hero-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+              <Card.Text className="hero-text d-flex justify-content-center">
+                Welcome to WhateverNow!
               </Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
+              <Card.Text className="hero-button">
+                <Button
+                  as={NavLink}
+                  to="/signup"
+                  variant="warning"
+                  type="submit"
+                  className="fw-bold fs-4  "
+                >
+                  Signup
+                </Button>
+              </Card.Text>
             </Card.ImgOverlay>
           </Card>
+
           <Row className="justify-content-md-center">
             <Col md="auto">
-              Welcome to Whatever Now
-              <div>
-                <img
-                  src="/img/HI.png"
-                  className="img-fluid"
-                  style={{ maxWidth: "80rem" }}
-                  alt="heropic"
-                />
-              </div>
+              <h2 className="opacity-50 fs-1 about text-white d-flex justify-content-center">
+                What is What<span className="fw-light">Now</span>?
+              </h2>
+
+              <p className="text-white opacity-50 about-text d-flex justify-content-center">
+                Media itself has a weak shelf-life due to the overabundance of
+                news and the average person’s attention span is not very long.
+                So why not have a platform that understands this? WhateverNow
+                does! Here you can post about Whatever is in the Now and and
+                after the week is through it will vanish. WhateverNow
+                understands that some may take advantage of this vanish feature,
+                so we will be sure to remove any nefarious or malicious posts
+                that might be published here.
+              </p>
+
               {/* <div>Are mission statement being that Media its-self has a week self- life at best, with that being because of the overabundance of news or that People’s attention span is not that long. So why not have a social media Page that reflex that. With our app “What-3ver Now” that is our goal to achieve. With a little thing where every post and convo for that week is burned after. The week starts Sunday at 12est and ends Sunday 12est. Not ever post will last a week full week. Now it might see like we are going after a “Free-Speech” app as many others have done with their disdain for how Twitter or others have there Policys for posting content, but I assure you here we do intend to “watch posts” to see if any nefarious or malicious posts or comments are poste
 </div> */}
-              <div className="mb-2">
-                <Button variant="primary" size="lg">
-                  Login
-                </Button>{" "}
-                <Button variant="primary" size="lg">
-                  Sign Up
-                </Button>
-              </div>
             </Col>
           </Row>
         </>
@@ -96,14 +108,14 @@ const Home = () => {
         <div className="container mt-5 mb-5">
           <div className="row">
             <div className="col-md-12 col-sm-12">
-              <h1 className="opacity-25 mb-3">
+              <h1 className="opacity-25 mb-3 text-white">
                 What<span className="fw-light">ever</span>...
               </h1>
             </div>
           </div>
 
           <Form onSubmit={handlePostSubmit}>
-            <Form.Group className="mb-3 w-50" controlId="formGroupPost">
+            <Form.Group className="mb-3 w-75" controlId="formGroupPost">
               <Form.Control
                 type="post"
                 placeholder="Whatever you want to say..."
@@ -120,7 +132,7 @@ const Home = () => {
                   <Button
                     variant="warning"
                     type="submit"
-                    className="w-25 fs-5 fw-bold mt-3 mb-5 button-color"
+                    className="w-50 fs-5 fw-bold mt-3  button-color"
                     onClick={onClick}
                   >
                     Upload Picture
@@ -130,13 +142,17 @@ const Home = () => {
             </Form.Group>
 
             <Button
-              variant="dark"
+              variant="outline-warning"
               type="submit"
-              className="w-25 fs-5 fw-bold mt-3 mb-5 button-color"
+              className="w-25 fs-5 fw-bold  mb-5 button-color"
             >
               Publish Post
             </Button>
-            {error && <span>Something went wrong</span>}
+            {error && (
+              <span className="ms-4 fs-2 text-white opacity-75">
+                Something went wrong!
+              </span>
+            )}
           </Form>
 
           <>
