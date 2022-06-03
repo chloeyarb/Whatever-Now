@@ -63,13 +63,14 @@ const Header = () => {
             >
               Account Settings
             </Nav.Link>
-            <Nav.Link
+              <Nav.Link
               as={NavLink}
               to="/login"
               className="Nav-list fs-5 text-dark mt-1"
-            >
+              >
               Login
             </Nav.Link>
+          
             <Nav.Link
               as={NavLink}
               to="/signup"
