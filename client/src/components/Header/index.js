@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import Auth from '../../utils/auth'; 
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
           <Nav.Link as={NavLink} to="/signup">
             Sign Up
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/logout">
+          <Nav.Link as={NavLink} to="/logout" onClick={Auth.logout}>
             Logout
           </Nav.Link>
         </Nav>
