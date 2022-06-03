@@ -44,8 +44,8 @@ function Signup(props) {
                     <input placeholder="Your email" name="email" type="email" id="email" onChange={handleUpdate}/>
                 </div>
                 <div className=''>
-                    <label htmlFor="pwd"> Password:</label>
-                    <input placeholder="******" name="pw" type="pw" id="pw" onChange={handleUpdate}/>
+                    <label htmlFor="password"> Password:</label>
+                    <input placeholder="******" name="password" type="password" id="pw" onChange={handleUpdate}/>
                 </div>
                 <div className=''>
                     <button type="submit">Submit</button>
