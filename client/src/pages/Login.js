@@ -1,39 +1,51 @@
 import React, { useState } from "react";
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from "@apollo/client";
-
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 
-function Login(props) {
+const Login = () => {
   const [formState, setFormState] = useState({ username: "", password: "" });
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
+
+    // update state based on form input changes
+    const handleUpdate = (action) => {
+      const { name, value } = action.target;
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    };
 
   // submit form
   const handleFormSubmit = async (action) => {
     action.preventDefault();
-    try {
-      const mutationResponse = await login({
-        variables: {
-          username: formState.username,
-          password: formState.password,
-        },
-      });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
-    } catch (error) {
-      console.log(error);
+
+    const form = action.currentTarget;
+    if (form.checkValidity() === false) {
+      action.preventDefault();
+      action.stopPropagation();
     }
-  };
-  // update state based on form input changes
-  const handleUpdate = (action) => {
-    const { name, value } = action.target;
+
+    try {
+      const { data } = await login({
+        variables: {...formState}
+      });
+      Auth.login(data.login.token);
+
+    } catch (e) {
+      console.error(e);
+      setShowAlert(true);
+    }
+
     setFormState({
-      ...formState,
-      [name]: value,
+      username: '',
+      password: ''
     });
   };
+
 
   return (
     <div>
