@@ -1,5 +1,4 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 
@@ -20,8 +19,17 @@ const Account = () => {
                 type="submit"
                 className="w-25 fs-5 fw-bold mt-3 mb-5 button-color"
             >
-                Publish Post
+                Change Profile Picture 
             </Button>
+
+            <Button
+                variant="dark"
+                type="submit"
+                className="w-25 fs-5 fw-bold mt-3 mb-5 button-color"
+            >
+                Change Password
+            </Button>
+
         </div>
     );
 }
