@@ -1,40 +1,65 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <div className="main-footer fixed-bottom">
+    <div className="main-footer pt-5">
       <div className="container">
         <div className="row">
           {/* Column 1 */}
-          <div className="col-md-3 col-sm-6">
-            <h4>Logo</h4>
+          <div className="col-3 col-sm-3 ">
+            <Link to="/">
+              <img src="/img/Logo.png" alt="logo" style={{ width: "80%" }} />
+            </Link>
           </div>
           {/* Column 2 */}
-          <div className="col-md-3 col-sm-6">
+          <div className="col-3 col-sm-3">
             <h5>Contributors</h5>
-            <ul className="list-unstyled text-muted">
-              <li>Chloe Yarborough</li>
-              <li>Robert Platzer Jr</li>
-              <li>Alen Dunn</li>
-              <li>Nico D'Anna</li>
-              <li>Nicole Barranca</li>
+            <ul className="list-unstyled text-dark fw-light">
+              <li>
+                <span className="fw-normal">Chloe</span> Yarborough
+              </li>{" "}
+              <li>
+                <span className="fw-normal">Robert</span> Platzer Jr
+              </li>{" "}
+              <li>
+                <span className="fw-normal">Alen</span> Dunn
+              </li>{" "}
+              <li>
+                <span className="fw-normal">Nico</span> D'Anna
+              </li>
+              <li>
+                <span className="fw-normal">Nicole</span> Barranca
+              </li>
             </ul>
           </div>
 
           {/* Column 3 */}
-          <div className="col-md-3 col-sm-6">
+          <div className="col-3 col-sm-3">
             <h5>WhateverNow</h5>
-            <ul className="list-unstyled text-muted">
-              <li>Home</li>
-              <li>Login</li>
-              <li>Signup</li>
-              <li>Logout</li>
-              <li>Account Settings</li>
+            <ul className="list-unstyled ">
+              <Link to="/" className="nounderline">
+                <li>Home</li>
+              </Link>
+              <Link to="/accountsettings" className="nounderline ">
+                <li>Account Settings</li>
+              </Link>
+              <Link to="/login" className="nounderline">
+                <li>Login</li>
+              </Link>
+              <Link to="/signup" className="nounderline">
+                <li>Sign Up</li>
+              </Link>
+              <Link to="/logout" className="nounderline">
+                <li>Logout</li>
+              </Link>
             </ul>
           </div>
           {/* Column 4 */}
-          <div className="col-md-3 col-sm-6 mt-4">
+          <div className="col-3 col-sm-3 mt-3">
             <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
               <FontAwesomeIcon icon={faGithub} className="iconStyle" />
             </a>
