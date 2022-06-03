@@ -52,9 +52,7 @@ const Signup = () => {
           Sign <span className="fw-light">up</span>...
         </h1>
       </div>
-            {/* This is needed for the validation functionality above */}
             <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="mt-5">
-                {/* show alert if server response is bad */}
                 <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                     Invalid signup, please try again. 
                 </Alert>
