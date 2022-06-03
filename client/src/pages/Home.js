@@ -106,7 +106,6 @@ const Home = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
-              {/* <Form.Control type="file" placeholder="file" /> */}
               <UploadButton
               uploader={uploader}
               options={options} 
@@ -136,7 +135,7 @@ const Home = () => {
 
           <>
             {loading && (<div>loading....</div>)}
-            {/* Card with image top, text bottom */}
+        
             {posts.map(post => (
               <Card className="mb-3 w-75 " key={post._id}>
                 {post.imgUrl && <Card.Img variant="top" src={post.imgUrl} />}
@@ -153,19 +152,7 @@ const Home = () => {
             ))}
             
             <br />
-            {/* Card with text top, image bottom
-            <Card className="mb-3 w-75">
-              <Card.Body>
-                <Button variant="dark" type="submit" className="">
-                  Like
-                </Button>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-              </Card.Body>
-              <Card.Img variant="bottom" src="holder.js/100px180" />
-            </Card> */}
+          
           </>
         </div>
       )}
