@@ -4,13 +4,16 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar className="nav-back">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          WhateverNow
+          <h1 className="fw-light Nav-list">
+            {" "}
+            Whatever<span className="fw-lighter">Now</span>
+          </h1>
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link as={NavLink} to="/accountsettings">
+          <Nav.Link as={NavLink} to="/accountsettings" className="Nav-list">
             Account Settings
           </Nav.Link>
           <Nav.Link as={NavLink} to="/login">
