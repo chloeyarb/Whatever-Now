@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+
 import { NavLink } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
@@ -14,7 +15,7 @@ import auth from "../utils/auth";
 import { Container, Col, Row } from "react-bootstrap";
 
 const Home = () => {
-  const uploader = new Uploader({ apiKey: "free" });
+  const uploader = new Uploader({ apiKey: process.env.UPLOADER_KEY });
   const options = {
     styles: {
       colors: {
