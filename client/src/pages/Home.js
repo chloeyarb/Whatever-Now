@@ -15,7 +15,7 @@ import auth from "../utils/auth";
 import { Container, Col, Row } from "react-bootstrap";
 
 const Home = () => {
-  const uploader = new Uploader({ apiKey: process.env.UPLOADER_KEY });
+  const uploader = new Uploader({ apiKey: process.env.REACT_APP_UPLOADER_KEY });
   const options = {
     styles: {
       colors: {
