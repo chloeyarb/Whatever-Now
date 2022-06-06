@@ -26,6 +26,7 @@ const Home = () => {
 
   const [imgUrl, setImgUrl] = useState("");
   const [postText, setPostText] = useState("");
+  const [uploadBtn, setUploadBtn] = useState(true);
 
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
@@ -33,10 +34,20 @@ const Home = () => {
 
   const loggedIn = auth.LoggedIn();
 
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    refetchQueries: [
+      { query: QUERY_POSTS},
+      'posts'
+    ]
+  });
 
   const handleChange = (e) => {
     setPostText(e.target.value);
+  };
+
+  const handleImageUpload = (files) => {
+    setImgUrl(files[0].fileUrl);
+    setUploadBtn(false);
   };
 
   const handlePostSubmit = async (e) => {
@@ -49,6 +60,7 @@ const Home = () => {
 
       setPostText("");
       setImgUrl("");
+      setUploadBtn(true);
     } catch (err) {
       console.log(err);
     }
@@ -124,10 +136,11 @@ const Home = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
-              <UploadButton
+              {uploadBtn && (
+                <UploadButton
                 uploader={uploader}
                 options={options}
-                onComplete={(files) => setImgUrl(files[0].fileUrl)}
+                onComplete={handleImageUpload}
               >
                 {({ onClick }) => (
                   <Button
@@ -140,6 +153,8 @@ const Home = () => {
                   </Button>
                 )}
               </UploadButton>
+              )}
+              
             </Form.Group>
 
             <Button
