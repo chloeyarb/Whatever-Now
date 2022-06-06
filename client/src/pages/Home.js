@@ -130,8 +130,9 @@ const Home = () => {
           <Form onSubmit={handlePostSubmit}>
             <Form.Group className="mb-3 w-75" controlId="formGroupPost">
               <Form.Control
-                type="post"
+                type="text"
                 placeholder="Whatever you want to say..."
+                value={postText}
                 onChange={handleChange}
               />
             </Form.Group>
