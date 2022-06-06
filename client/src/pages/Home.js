@@ -15,7 +15,14 @@ const Home = () => {
                         <Card.Text className="hero-text">
                             Welcome to WhateverNow
                         </Card.Text>
-
+                        <div className="mb-2">
+                            <Button variant="primary" size="lg">
+                                Large button
+                            </Button>{' '}
+                            <Button variant="secondary" size="lg">
+                                Large button
+                            </Button>
+                        </div>
                     </Card.ImgOverlay>
                 </Card>
             </div>

@@ -63,6 +63,7 @@
   font-size: 40px;
   margin-top: 30%;
   margin-right: 30%;
+  font-weight: bolder;
   
   
 }
@@ -70,5 +71,6 @@
 .hero-img {
   max-height: 1100px;
   max-width: 1100px;
+  margin-left: 40px;
 }
 
