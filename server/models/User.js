@@ -7,16 +7,21 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            trim: true
+            trim: true,
+            minlength: [6, 'Username must be between 6-20 characters.'],
+            maxlength: [20, 'Username must be between 6-20 characters.']
         },
         email: {
             type: String,
             required: true,
             unique: true,
+            match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Must be a valid email address.']
         },
         password: {
             type: String,
             required: true,
+            minLength: [5, 'Password too short.'],
+            maxLength: [ 25, 'Password too long.' ]
         },
         posts: [
             {
