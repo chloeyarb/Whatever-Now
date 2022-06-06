@@ -49,3 +49,20 @@ mutation addComment($commentBody: String!, $postId: ID!) {
         }
     }
 }`;
+
+export const ADD_LIKE = gql`
+mutation like($postId: ID!) {
+    like(postId: $postId) {
+        _id
+        username
+        postText
+        createdAt
+        imgUrl
+        likes
+        likeCount
+        comments {
+            _id
+        }
+    }
+}
+`

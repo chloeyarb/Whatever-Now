@@ -3,18 +3,19 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+
 import { NavLink } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_POSTS } from "../utils/queries";
-import { ADD_POST } from "../utils/mutations";
+import { ADD_POST, ADD_LIKE } from "../utils/mutations";
 import auth from "../utils/auth";
 
 import { Container, Col, Row } from "react-bootstrap";
 
 const Home = () => {
-  const uploader = new Uploader({ apiKey: "free" });
+  const uploader = new Uploader({ apiKey: process.env.REACT_APP_UPLOADER_KEY });
   const options = {
     styles: {
       colors: {
@@ -25,6 +26,7 @@ const Home = () => {
 
   const [imgUrl, setImgUrl] = useState("");
   const [postText, setPostText] = useState("");
+  const [uploadBtn, setUploadBtn] = useState(true);
 
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
@@ -32,11 +34,35 @@ const Home = () => {
 
   const loggedIn = auth.LoggedIn();
 
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    refetchQueries: [
+      { query: QUERY_POSTS},
+      'posts'
+    ]
+  });
+
+  const [likePost] = useMutation(ADD_LIKE);
 
   const handleChange = (e) => {
     setPostText(e.target.value);
   };
+
+  const handleImageUpload = (files) => {
+    setImgUrl(files[0].fileUrl);
+    setUploadBtn(false);
+  };
+
+  const handlePostLike = async (postId, e) => {
+    e.preventDefault();
+
+    try {
+      await likePost({
+        variables: { postId }
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handlePostSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +74,7 @@ const Home = () => {
 
       setPostText("");
       setImgUrl("");
+      setUploadBtn(true);
     } catch (err) {
       console.log(err);
     }
@@ -117,16 +144,18 @@ const Home = () => {
           <Form onSubmit={handlePostSubmit}>
             <Form.Group className="mb-3 w-75" controlId="formGroupPost">
               <Form.Control
-                type="post"
+                type="text"
                 placeholder="Whatever you want to say..."
+                value={postText}
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
-              <UploadButton
+              {uploadBtn && (
+                <UploadButton
                 uploader={uploader}
                 options={options}
-                onComplete={(files) => setImgUrl(files[0].fileUrl)}
+                onComplete={handleImageUpload}
               >
                 {({ onClick }) => (
                   <Button
@@ -139,6 +168,8 @@ const Home = () => {
                   </Button>
                 )}
               </UploadButton>
+              )}
+              
             </Form.Group>
 
             <Button
@@ -164,8 +195,8 @@ const Home = () => {
 
                 <Card.Body>
                   <Card.Text>{post.postText}</Card.Text>
-                  <Button variant="warning" type="submit" className="">
-                    Like
+                  <Button variant="warning" type="button" className="" onClick={(e) => handlePostLike(post._id, e)}>
+                    {post.likeCount}
                   </Button>
                 </Card.Body>
               </Card>

@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "develop": "concurrently \"cd server && npm start\" \"cd client && npm start\""
+    "develop": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,10 @@
   "homepage": "https://github.com/chloeyarb/Whatever-Now#readme",
   "dependencies": {
     "concurrently": "^7.2.1",
+<<<<<<< HEAD
     "react-bootstrap": "^2.4.0"
+=======
+    "dotenv-webpack": "^7.1.0"
+>>>>>>> develop
   }
 }
