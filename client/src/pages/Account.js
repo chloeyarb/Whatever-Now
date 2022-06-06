@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactDOM from 'react-dom';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { Card } from "react-bootstrap";
@@ -21,6 +24,26 @@ function CustomToggle({ children, eventKey }) {
   );
 }
 
+function MyCalendar() {
+ 
+  const [date, setDate] = useState(new Date());
+ 
+  const onDateChange = (newDate) => {
+    setDate(newDate);
+    console.log(newDate);
+  }
+ 
+  return (
+      <Calendar
+          onChange={onDateChange}
+          value={date}
+          showNeighboringMonth={false}
+          locale={"en-US"}
+        />
+  );
+}
+
+
 function Account() {
   return (
     <Accordion defaultActiveKey="0">
@@ -28,7 +51,7 @@ function Account() {
         <Card.Header>
           <CustomToggle eventKey="0">
             Change Your Settings
-            </CustomToggle>
+          </CustomToggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
           <Card.Body>
@@ -72,7 +95,7 @@ function Account() {
         </Card.Header>
         <Accordion.Collapse eventKey="1">
           <Card.Body>
-
+            <MyCalendar></MyCalendar>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
