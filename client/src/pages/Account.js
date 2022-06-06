@@ -91,7 +91,7 @@ function Account() {
       </Card>
       <Card>
         <Card.Header>
-          <CustomToggle eventKey="1">Update Your Birthday</CustomToggle>
+          <CustomToggle eventKey="1">Add a Birthday</CustomToggle>
         </Card.Header>
         <Accordion.Collapse eventKey="1">
           <Card.Body>
