@@ -23,10 +23,6 @@
   "homepage": "https://github.com/chloeyarb/Whatever-Now#readme",
   "dependencies": {
     "concurrently": "^7.2.1",
-<<<<<<< HEAD
     "react-bootstrap": "^2.4.0"
-=======
-    "dotenv-webpack": "^7.1.0"
->>>>>>> develop
   }
 }
