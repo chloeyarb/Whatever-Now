@@ -9,7 +9,7 @@ import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_POSTS } from "../utils/queries";
-import { ADD_POST } from "../utils/mutations";
+import { ADD_POST, ADD_LIKE } from "../utils/mutations";
 import auth from "../utils/auth";
 
 import { Container, Col, Row } from "react-bootstrap";
@@ -41,6 +41,8 @@ const Home = () => {
     ]
   });
 
+  const [likePost] = useMutation(ADD_LIKE);
+
   const handleChange = (e) => {
     setPostText(e.target.value);
   };
@@ -49,6 +51,18 @@ const Home = () => {
     setImgUrl(files[0].fileUrl);
     setUploadBtn(false);
   };
+
+  const handlePostLike = async (postId, e) => {
+    e.preventDefault();
+
+    try {
+      await likePost({
+        variables: { postId }
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handlePostSubmit = async (e) => {
     e.preventDefault();
@@ -181,8 +195,8 @@ const Home = () => {
 
                 <Card.Body>
                   <Card.Text>{post.postText}</Card.Text>
-                  <Button variant="warning" type="submit" className="">
-                    Like
+                  <Button variant="warning" type="button" className="" onClick={(e) => handlePostLike(post._id, e)}>
+                    {post.likeCount}
                   </Button>
                 </Card.Body>
               </Card>
