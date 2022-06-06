@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 
 const commentSchema = new Schema(
@@ -14,8 +15,8 @@ const commentSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now
-            // date formatter
+            default: Date.now,
+            get: (date) => dateFormat(date),
         }
     }
 );
@@ -31,7 +32,7 @@ const postSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            // date formatter here
+            get: (date) => dateFormat(date)
         },
         username: {
             type: String,
@@ -50,7 +51,8 @@ const postSchema = new Schema(
     },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true,
         }
     }
 );
