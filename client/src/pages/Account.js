@@ -1,6 +1,10 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+
+
 
 // need to render the page with and acoounts settings with change PFP, change password, and add birthday
 const Account = () => {
@@ -8,47 +12,73 @@ const Account = () => {
     <div className="container mt-5 mb-5">
       <div className="row">
         <h1 className="opacity-25 mb-3 text-light">
-          Account <span className="fw-light">Settings</span>...
+          Account <span className="fw-light">Settings</span>
         </h1>
       </div>
+      <>
+        <div className="row">
+          <h1 className="opacity-25 mb-3 text-light">
+            Change You're Settings
+          </h1>
+          <ButtonGroup vertical>
+            <Button>Change</Button>
+          </ButtonGroup>
+          <InputGroup className="mb-3">
+            <FormControl
+              placeholder="Change You're Username"
+              aria-label="Username"
+              aria-describedby="basic-addon2"
+            />
+            <Button
+              variant="dark">
+              Submit
+            </Button>
 
-      <Form className="mt-5">
-        <Form.Group className="mb-4 w-50" controlId="formGroupUsername">
-          <Form.Label htmlFor="inputUsername1" className="text-muted fs-4 mb-2">
-            Update username
-          </Form.Label>
-          <Form.Control type="username" placeholder="New username..." />
-        </Form.Group>
+          </InputGroup>
+          <InputGroup className="mb-3">
+            <FormControl
+              placeholder="Change You're Email"
+              aria-label="Email"
+              aria-describedby="basic-addon2"
+            />
+            <Button
+              variant="dark">
+              Submit
+            </Button>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupEmail">
-          <Form.Label htmlFor="inputEmail1" className="text-muted fs-4 mb-2">
-            Update email
-          </Form.Label>
-          <Form.Control type="email" placeholder="New email..." />
-        </Form.Group>
+          </InputGroup>
+          <InputGroup className="mb-3">
+            <FormControl
+              placeholder="Change You're Password"
+              aria-label="Password"
+              aria-describedby="basic-addon2"
+            />
+            <Button
+              variant="dark">
+              Submit
+            </Button>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupPassword">
-          <Form.Label htmlFor="inputPassword1" className="text-muted fs-4 mb-2">
-            Update password
-          </Form.Label>
-          <Form.Control type="password" placeholder="New password..." />
-        </Form.Group>
+          </InputGroup>
+        </div>
+      </>
+      <div className="row">
+        <h1 className="opacity-25 mb-3 text-light">
+          Change You're Settings
+        </h1>
+        <ButtonGroup vertical>
+          <Button>Button</Button>
+        </ButtonGroup>
+      </div>
+      <div className="row">
+        <h1 className="opacity-25 mb-3 text-light">
+          Change You're Settings
+        </h1>
+        <ButtonGroup vertical>
+          <Button>Button</Button>
+        </ButtonGroup>
+      </div>
 
-        <Form.Group className="mb-4 w-25" controlId="formGroupPhoto">
-          <Form.Label htmlFor="inputPhoto1" className="text-muted fs-4 mb-2">
-            Update account photo
-          </Form.Label>
-          <Form.Control type="photo" placeholder="PDF..." />
-        </Form.Group>
-        <Button
-          variant="warning"
-          type="submit"
-          className="w-25 fs-5 fw-bold mt-5 mb-5 "
-        >
-          Update My Account
-        </Button>
-      </Form>
-    </div>
+    </div >
   );
 };
 
