@@ -45,6 +45,7 @@ type Mutation {
     addComment(commentBody: String!, postId: ID!): Post
     like(postId: ID!): Post
     login(username: String!, password: String!): Auth
+    editUser(newName: String, newPassword: String, newEmail: String, userId: ID!) : User
 }
 `
 
