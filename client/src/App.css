@@ -3,60 +3,6 @@
 .nav-back {
   background: #ffb627;
 }
-/* .Nav-list {
-  color: black;
-}
-
-.Nav-list:hover {
-  color: white;
-} */
-/* Footer classes */
-
-.main-footer {
-  display: flex;
-  align-self: flex-end;
-  position: relative;
-
-  bottom: 0;
-  width: 100%;
-  height: 330px; /* Height of the footer */
-
-  background: #ffb627;
-}
-
-.iconStyle {
-  width: 50px;
-  height: 50px;
-  color: #333533;
-  margin-top: 10px;
-  opacity: 0.7;
-}
-
-.iconStyle:hover {
-  opacity: 1;
-}
-
-#logo {
-  width: 70px;
-  height: 70px;
-}
-#logotwo {
-  width: 80px;
-  height: 80px;
-}
-
-.nounderline {
-  text-decoration: none !important;
-  color: black;
-}
-
-.nounderline:hover {
-  color: gray;
-}
-
-.name {
-  color: #d6d6d6;
-}
 
 .about {
   margin-top: 100px;
@@ -128,3 +74,57 @@
     font-size: 30px;
   }
 } */
+
+.postTextArea {
+  height: 50px;
+}
+/* FOOTER  */
+
+.main-footer {
+  display: flex;
+  align-self: flex-end;
+  position: relative;
+
+  bottom: 0;
+  width: 100%;
+  height: 330px; /* Height of the footer */
+
+  background: #ffb627;
+}
+
+.iconStyle {
+  width: 50px;
+  height: 50px;
+  color: #333533;
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+.iconStyle:hover {
+  opacity: 1;
+}
+
+#logo {
+  width: 70px;
+  height: 70px;
+}
+#logotwo {
+  width: 80px;
+  height: 80px;
+}
+
+.nounderline {
+  text-decoration: none !important;
+  color: black;
+}
+
+.nounderline:hover {
+  color: gray;
+}
+
+.name {
+  color: #d6d6d6;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 667px) {
+}

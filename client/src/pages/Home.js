@@ -132,12 +132,13 @@ const Home = () => {
           </div>
 
           <Form onSubmit={handlePostSubmit}>
-            <Form.Group className="mb-3 w-75" controlId="formGroupPost">
+            <Form.Group className="mb-3 w-50" controlId="formGroupPost">
               <Form.Control
                 type="text"
                 placeholder="Whatever you want to say..."
                 value={postText}
                 onChange={handleChange}
+                className="postTextArea "
               />
             </Form.Group>
             <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
@@ -179,7 +180,7 @@ const Home = () => {
             {loading && <div>loading....</div>}
 
             {posts.map((post) => (
-              <Card className="mb-3 w-75 " key={post._id}>
+              <Card className="mb-5 w-50 " key={post._id}>
                 {post.imgUrl && <Card.Img variant="top" src={post.imgUrl} />}
 
                 <Card.Body>

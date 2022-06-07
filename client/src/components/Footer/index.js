@@ -15,6 +15,12 @@ const Footer = () => {
               <img src="/img/Logo.png" alt="logo" style={{ width: "80%" }} />
             </Link>
           </div>
+          {/* Column 4 */}
+          <div className="col-3 col-sm-3 ">
+            <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
+              <FontAwesomeIcon icon={faGithub} className="iconStyle" />
+            </a>
+          </div>
           {/* Column 2 */}
           <div className="col-3 col-sm-3">
             <h5>Contributors</h5>
@@ -73,12 +79,6 @@ const Footer = () => {
                 <li>Logout</li>
               </Link>
             </ul>
-          </div>
-          {/* Column 4 */}
-          <div className="col-3 col-sm-3 mt-3">
-            <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
-              <FontAwesomeIcon icon={faGithub} className="iconStyle" />
-            </a>
           </div>
         </div>
         {/* Footer Bottom */}
