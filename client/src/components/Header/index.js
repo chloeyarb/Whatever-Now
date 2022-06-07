@@ -24,7 +24,7 @@ const Header = () => {
                 <Nav.Link
                   as={NavLink}
                   to="/accountsettings"
-                  className="Nav-list fs-5  text-dark mt-1"
+                  className="Nav-list fs-5  mt-1"
                 >
                   Account Settings
                 </Nav.Link>
@@ -32,7 +32,7 @@ const Header = () => {
                   as={NavLink}
                   to="/logout"
                   onClick={Auth.logout}
-                  className="Nav-list text-dark fs-5 mt-1"
+                  className="Nav-list fs-5 mt-1"
                 >
                   Logout
                 </Nav.Link>
@@ -42,14 +42,14 @@ const Header = () => {
                 <Nav.Link
                   as={NavLink}
                   to="/login"
-                  className="Nav-list fs-5 text-dark mt-1"
+                  className="Nav-list fs-5  mt-1"
                 >
                   Login
                 </Nav.Link>
                 <Nav.Link
                   as={NavLink}
                   to="/signup"
-                  className="Nav-list text-dark fs-5 mt-1"
+                  className="Nav-list fs-5 mt-1"
                 >
                   Sign Up
                 </Nav.Link>
