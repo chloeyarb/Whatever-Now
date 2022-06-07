@@ -34,9 +34,21 @@ const userSchema = new Schema(
 
 // encrypt password on save
 userSchema.pre('save', async function(next) {
-    if (this.isNew || this.isModified('password')) {
+    if (this.isNew) {
         this.password = await bcrypt.hash(this.password, 10);
     }
+
+    next();
+});
+
+userSchema.pre('findOneAndUpdate', async function(next) {
+    const docToUpdate = await this.model.findOne(this.getQuery());
+    
+    const { password } = docToUpdate;
+
+    newPassword = await bcrypt.hash(password, 10);
+
+    this.model.updateOne({$set: {password: newPassword}});
 
     next();
 });
