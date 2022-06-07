@@ -64,5 +64,20 @@ mutation like($postId: ID!) {
             _id
         }
     }
-}
-`
+}`;
+
+export const EDIT_USER = gql`
+mutation editUser($newName: String, $newPassword: String, $newEmail: String, $userId: ID!) {
+    editUser(newName: $newName, newPassword: $newPassword, newEmail: $newEmail, userId: $userId) {
+        _id
+        username
+        email 
+        posts {
+            _id
+            postText
+            createdAt
+            likeCount
+        }
+        likedPosts
+    }
+}`
