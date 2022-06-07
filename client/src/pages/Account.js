@@ -101,8 +101,6 @@ function Account() {
       </Card>
     </Accordion>
   );
-
-  // need to render the page with and acoounts settings with change PFP, change password, and add birthday
 };
 
 export default Account;
