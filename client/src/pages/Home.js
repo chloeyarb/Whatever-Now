@@ -13,8 +13,8 @@ import { ADD_POST, ADD_LIKE } from "../utils/mutations";
 import auth from "../utils/auth";
 
 import { Container, Col, Row } from "react-bootstrap";
+import { BsFillEmojiSunglassesFill } from "react-icons/bs";
 
-import { MDBIcon } from 'mdb-react-ui-kit';
 
 
 const Home = () => {
@@ -199,10 +199,10 @@ const Home = () => {
                 <Card.Body>
                   <Card.Text className=" fs-1">{post.postText}</Card.Text>
                   <Button variant="warning" type="button" className="" onClick={(e) => handlePostLike(post._id, e)}>
-                    {post.likeCount}
+                    {post.likeCount} <BsFillEmojiSunglassesFill/> 
                   </Button>
                 </Card.Body>
-                <MDBIcon fas icon="thumbs-up" />
+                
               </Card>
             ))}
 

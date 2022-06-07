@@ -25,6 +25,7 @@
     "concurrently": "^7.2.1",
     "mdb-react-ui-kit": "^3.0.0",
     "react-bootstrap": "^2.4.0",
-    "react-calendar": "^3.7.0"
+    "react-calendar": "^3.7.0",
+    "react-icons": "^4.4.0"
   }
 }
