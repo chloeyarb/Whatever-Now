@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import ReactDOM from 'react-dom';
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { Card } from "react-bootstrap";
 import Button from 'react-bootstrap/Button'
 import { Accordion, useAccordionButton } from "react-bootstrap";
+
+import Stack from 'react-bootstrap/Stack'
 
 function CustomToggle({ children, eventKey }) {
   const decoratedOnClick = useAccordionButton(eventKey, () =>
@@ -16,7 +16,8 @@ function CustomToggle({ children, eventKey }) {
   return (
     <button
       type="button"
-      style={{ backgroundColor: 'pink' }}
+      variant="warning"
+      className="fw-bold fs-4 bg-warning"
       onClick={decoratedOnClick}
     >
       {children}
@@ -24,24 +25,7 @@ function CustomToggle({ children, eventKey }) {
   );
 }
 
-function MyCalendar() {
- 
-  const [date, setDate] = useState(new Date());
- 
-  const onDateChange = (newDate) => {
-    setDate(newDate);
-    console.log(newDate);
-  }
- 
-  return (
-      <Calendar
-          onChange={onDateChange}
-          value={date}
-          showNeighboringMonth={false}
-          locale={"en-US"}
-        />
-  );
-}
+
 
 
 function Account() {
@@ -54,9 +38,9 @@ function Account() {
           </CustomToggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>
+          <Card.Body className="mb-3" >
             <>
-              <InputGroup className="mb-3">
+              <InputGroup className="mb-5">
                 <FormControl
                   size="lg"
                   placeholder="Change You're Username"
@@ -65,7 +49,7 @@ function Account() {
                 />
 
               </InputGroup>
-              <InputGroup className="mb-3">
+              <InputGroup className="mb-5">
                 <FormControl
                   size="lg"
                   placeholder="Change You're Email"
@@ -74,7 +58,7 @@ function Account() {
                 />
                 <InputGroup.Text id="basic-addon2">@Email.com</InputGroup.Text>
               </InputGroup>
-              <InputGroup className="mb-3">
+              <InputGroup className="mb-5">
                 <FormControl
                   size="lg"
                   placeholder="Change You're Password"
@@ -82,20 +66,11 @@ function Account() {
                   aria-describedby="basic-addon2"
                 />
               </InputGroup>
-              <Button>
-                Submit
-              </Button>
+              <Stack gap={2} className="col-md-5 mx-auto">
+                <Button variant="warning fw-bold fs-4">Save changes</Button>
+                <Button variant="outline-warningfw-bold fs-4">Cancel</Button>
+              </Stack>
             </>
-          </Card.Body>
-        </Accordion.Collapse>
-      </Card>
-      <Card>
-        <Card.Header>
-          <CustomToggle eventKey="1">Add a Birthday</CustomToggle>
-        </Card.Header>
-        <Accordion.Collapse eventKey="1">
-          <Card.Body>
-            <MyCalendar></MyCalendar>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
