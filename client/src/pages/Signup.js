@@ -70,7 +70,7 @@ const Signup = () => {
           Invalid signup, please try again.
         </Alert>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupUsername">
+        <Form.Group className="mb-4 w-50">
           <Form.Label htmlFor="username" className="text-muted fs-4 mb-2">
             Username:
           </Form.Label>
@@ -87,7 +87,7 @@ const Signup = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupEmail">
+        <Form.Group className="mb-4 w-50">
           <Form.Label htmlFor="email" className="text-muted fs-4 mb-2">
             Email:
           </Form.Label>
@@ -105,7 +105,7 @@ const Signup = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupPassword">
+        <Form.Group className="mb-4 w-50">
           <Form.Label htmlFor="password" className="text-muted fs-4 mb-2">
             Password:
           </Form.Label>

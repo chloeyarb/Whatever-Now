@@ -59,13 +59,13 @@ const Login = () => {
           Invalid login, please try again.
         </Alert>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupUsername">
+        <Form.Group className="mb-4 w-50">
           <Form.Label htmlFor="username" className="text-muted fs-4 mb-2">Username:</Form.Label>
           <Form.Control type='text' placeholder='Enter username' name='username' onChange={handleUpdate} value={formState.username} required />
           <Form.Control.Feedback type='invalid'>Username needed</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-4 w-50" controlId="formGroupPassword">
+        <Form.Group className="mb-4 w-50">
           <Form.Label htmlFor='password' className="text-muted fs-4 mb-2">Password:</Form.Label>
           <Form.Control type='password' placeholder='Enter password' name='password' onChange={handleUpdate} value={formState.password} required />
           <Form.Control.Feedback type='invalid'> Password needed</Form.Control.Feedback>
