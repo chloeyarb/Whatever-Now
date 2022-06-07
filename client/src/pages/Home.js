@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-
 import { NavLink } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
@@ -35,10 +34,7 @@ const Home = () => {
   const loggedIn = auth.LoggedIn();
 
   const [addPost, { error }] = useMutation(ADD_POST, {
-    refetchQueries: [
-      { query: QUERY_POSTS},
-      'posts'
-    ]
+    refetchQueries: [{ query: QUERY_POSTS }, "posts"],
   });
 
   const [likePost] = useMutation(ADD_LIKE);
@@ -57,12 +53,12 @@ const Home = () => {
 
     try {
       await likePost({
-        variables: { postId }
-      })
+        variables: { postId },
+      });
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const handlePostSubmit = async (e) => {
     e.preventDefault();
@@ -84,30 +80,24 @@ const Home = () => {
     <Container fluid="md" className="mt-4">
       {!loggedIn ? (
         <>
-          <Card className="bg-dark  text-white  ">
-            <Card.Img
-              src="/img/P.jpg"
-              alt="Card image"
-              className="hero-photo"
-            />
-            <Card.ImgOverlay>
-              {/* STYLE WELCOME MESSAGE + ADD BUTTONS */}
-              <Card.Text className="hero-text d-flex justify-content-center">
-                Welcome to WhateverNow!
-              </Card.Text>
-              <Card.Text className="hero-button">
+          <div id="parent">
+            <div id="heroimg">
+              <h1 className="hText"> Welcome to WhateverNow!</h1>
+
+              <div>
                 <Button
                   as={NavLink}
                   to="/signup"
                   variant="warning"
                   type="submit"
-                  className="fw-bold fs-4  "
+                  className="fw-bold fs-4 "
+                  size="sm"
                 >
                   Signup
                 </Button>
-              </Card.Text>
-            </Card.ImgOverlay>
-          </Card>
+              </div>
+            </div>
+          </div>
 
           <Row className="justify-content-md-center">
             <Col md="auto">
@@ -153,23 +143,22 @@ const Home = () => {
             <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
               {uploadBtn && (
                 <UploadButton
-                uploader={uploader}
-                options={options}
-                onComplete={handleImageUpload}
-              >
-                {({ onClick }) => (
-                  <Button
-                    variant="warning"
-                    type="submit"
-                    className="w-50 fs-5 fw-bold mt-3  button-color"
-                    onClick={onClick}
-                  >
-                    Upload Picture
-                  </Button>
-                )}
-              </UploadButton>
+                  uploader={uploader}
+                  options={options}
+                  onComplete={handleImageUpload}
+                >
+                  {({ onClick }) => (
+                    <Button
+                      variant="warning"
+                      type="submit"
+                      className="w-50 fs-5 fw-bold mt-3  button-color"
+                      onClick={onClick}
+                    >
+                      Upload Picture
+                    </Button>
+                  )}
+                </UploadButton>
               )}
-              
             </Form.Group>
 
             <Button
@@ -195,7 +184,12 @@ const Home = () => {
 
                 <Card.Body>
                   <Card.Text>{post.postText}</Card.Text>
-                  <Button variant="warning" type="button" className="" onClick={(e) => handlePostLike(post._id, e)}>
+                  <Button
+                    variant="warning"
+                    type="button"
+                    className=""
+                    onClick={(e) => handlePostLike(post._id, e)}
+                  >
                     {post.likeCount}
                   </Button>
                 </Card.Body>
