@@ -14,6 +14,9 @@ import auth from "../utils/auth";
 
 import { Container, Col, Row } from "react-bootstrap";
 
+import { MDBIcon } from 'mdb-react-ui-kit';
+
+
 const Home = () => {
   const uploader = new Uploader({ apiKey: process.env.REACT_APP_UPLOADER_KEY });
   const options = {
@@ -150,7 +153,7 @@ const Home = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
+            <Form.Group className="mb-3 w-50" controlId="formGroupPhoto" >
               {uploadBtn && (
                 <UploadButton
                 uploader={uploader}
@@ -190,15 +193,16 @@ const Home = () => {
             {loading && <div>loading....</div>}
 
             {posts.map((post) => (
-              <Card className="mb-3 w-75 " key={post._id}>
+              <Card className="mb-3 w-50 " key={post._id}>
                 {post.imgUrl && <Card.Img variant="top" src={post.imgUrl} />}
 
                 <Card.Body>
-                  <Card.Text>{post.postText}</Card.Text>
+                  <Card.Text className=" fs-1">{post.postText}</Card.Text>
                   <Button variant="warning" type="button" className="" onClick={(e) => handlePostLike(post._id, e)}>
                     {post.likeCount}
                   </Button>
                 </Card.Body>
+                <MDBIcon fas icon="thumbs-up" />
               </Card>
             ))}
 
