@@ -21,7 +21,8 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minLength: [5, 'Password too short.'],
-            maxLength: [ 25, 'Password too long.' ]
+            // maxlength validation not working with findOneAndUpdate pre hook
+            // maxLength: [ 25, 'Password too long.' ]
         },
         posts: [
             {
@@ -34,21 +35,17 @@ const userSchema = new Schema(
 
 // encrypt password on save
 userSchema.pre('save', async function(next) {
-    if (this.isNew) {
+    if (this.isNew || this.isModified('password')){
         this.password = await bcrypt.hash(this.password, 10);
     }
-
     next();
 });
-
+// encrypt new password on update
 userSchema.pre('findOneAndUpdate', async function(next) {
-    const docToUpdate = await this.model.findOne(this.getQuery());
+    if (this._update.password) {
+        this._update.password = await bcrypt.hash(this._update.password, 10);
+    }
     
-    const { password } = docToUpdate;
-
-    newPassword = await bcrypt.hash(password, 10);
-
-    this.model.updateOne({$set: {password: newPassword}});
 
     next();
 });
