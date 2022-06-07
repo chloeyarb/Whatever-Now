@@ -102,7 +102,7 @@ const Home = () => {
           <Row className="justify-content-md-center">
             <Col md="auto">
               <h2 className="opacity-50 fs-1 about text-white d-flex justify-content-center">
-                What is What<span className="fw-light">Now</span>?
+                What is Whatever<span className="fw-light">Now</span>?
               </h2>
 
               <p className="text-white opacity-50 about-text d-flex justify-content-center">
