@@ -16,6 +16,7 @@ import { setContext } from "@apollo/client/link/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Account from "./pages/Account";
+import auth from "./utils/auth";
 
 // link to graphql server, uses proxy in package.json
 const httpLink = createHttpLink({
@@ -46,9 +47,10 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="/accountsettings" element={<Account />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/accountsettings" element={auth.LoggedIn() ? <Account /> : <Home/>} />
+            <Route path="/*" element={<Home/>}/>
           </Routes>
         </div>
         <Footer />
