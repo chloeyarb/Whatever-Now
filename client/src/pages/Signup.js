@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
@@ -13,6 +13,10 @@ const Signup = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
+
+  useEffect(() => {
+    document.title = 'Sign Up'
+  });
 
   const handleUpdate = (action) => {
     const { name, value } = action.target;
