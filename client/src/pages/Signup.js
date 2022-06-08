@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
@@ -14,8 +14,12 @@ const Signup = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
 
-  const handleUpdate = (action) => {
-    const { name, value } = action.target;
+  useEffect(() => {
+    document.title = "Sign Up";
+  });
+
+  const handleUpdate = (e) => {
+    const { name, value } = e.target;
     setFormState({
       ...formState,
       [name]: value,
@@ -23,13 +27,13 @@ const Signup = () => {
   };
 
   // sign up form
-  const handleFormSubmit = async (action) => {
-    action.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-    const form = action.currentTarget;
+    const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      action.preventDefault();
-      action.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
     }
     try {
       const { data } = await addUser({
@@ -51,7 +55,7 @@ const Signup = () => {
   return (
     <div className="container mt-5 mb-5">
       <div className="row">
-        <h1 className="opacity-25 text-light">
+        <h1 className="opacity-50 text-light">
           Sign <span className="fw-light">up</span>...
         </h1>
       </div>
@@ -59,13 +63,13 @@ const Signup = () => {
         noValidate
         validated={validated}
         onSubmit={handleFormSubmit}
-        className="mt-5"
+        className="mt-3"
       >
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+          variant="warning"
         >
           Invalid signup, please try again.
         </Alert>

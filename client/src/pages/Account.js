@@ -1,80 +1,133 @@
-import React, { useState } from "react";
-import 'react-calendar/dist/Calendar.css';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import { Card } from "react-bootstrap";
-import Button from 'react-bootstrap/Button'
-import { Accordion, useAccordionButton } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useMutation } from "@apollo/client";
+import { EDIT_USER } from "../utils/mutations";
+import { Form, Alert } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
-import Stack from 'react-bootstrap/Stack'
+const Account = () => {
+  useEffect(() => {
+    document.title = "Account Settings";
+  });
 
-function CustomToggle({ children, eventKey }) {
-  const decoratedOnClick = useAccordionButton(eventKey, () =>
-    console.log('totally custom!'),
-  );
+  const [userState, setUserState] = useState("");
+  const [passwordState, setPasswordState] = useState("");
+  const [emailState, setEmailState] = useState("");
+  const [errAlert, setErrAlert] = useState(false);
+  const [successAlert, setSuccessAlert] = useState(false);
+
+  const [editUser, { error }] = useMutation(EDIT_USER);
+
+  const userUpdate = (e) => {
+    setUserState(e.target.value);
+  };
+
+  const passwordUpdate = (e) => {
+    setPasswordState(e.target.value);
+  };
+
+  const emailUpdate = (e) => {
+    setEmailState(e.target.value);
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await editUser({
+        variables: {
+          newName: userState,
+          newPassword: passwordState,
+          newEmail: emailState,
+        },
+        onCompleted: () => {
+          setSuccessAlert(true);
+          setErrAlert(false);
+        },
+        onError: () => {
+          setSuccessAlert(false);
+          setErrAlert(true);
+        },
+      });
+      setUserState("");
+      setPasswordState("");
+      setEmailState("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
-    <button
-      type="button"
-      variant="warning"
-      className="fw-bold fs-4 bg-warning"
-      onClick={decoratedOnClick}
-    >
-      {children}
-    </button>
-  );
-}
+    <div className="container mt-5 mb-5">
+      <div className="row">
+        <h1 className="opacity-25 text-light">
+          Account <span className="fw-light">Settings</span>...
+        </h1>
+      </div>
+      <Form onSubmit={handleFormSubmit} className="mt-5">
+        <Alert
+          dismissible
+          onClose={() => setSuccessAlert(false)}
+          show={successAlert}
+          variant="warning"
+        >
+          Your information has been updated!
+        </Alert>
+        <Alert
+          dismissible
+          onClose={() => setErrAlert(false)}
+          show={errAlert}
+          variant="warning"
+        >
+          {error && error.graphQLErrors[0].message}
+        </Alert>
+        <Form.Group className="mb-4 w-50">
+          <Form.Label htmlFor="username" className="text-muted fs-4 mb-2">
+            Username:
+          </Form.Label>
+          <Form.Control
+            onChange={userUpdate}
+            type="text"
+            name="username"
+            placeholder="Change Username"
+            value={userState}
+          />
+        </Form.Group>
 
+        <Form.Group className="mb-4 w-50">
+          <Form.Label htmlFor="email" className="text-muted fs-4 mb-2">
+            Email:
+          </Form.Label>
+          <Form.Control
+            onChange={emailUpdate}
+            type="text"
+            name="email"
+            placeholder="Change Email"
+            value={emailState}
+          />
+        </Form.Group>
 
+        <Form.Group className="mb-4 w-50">
+          <Form.Label htmlFor="password" className="text-muted fs-4 mb-2">
+            Password:
+          </Form.Label>
+          <Form.Control
+            onChange={passwordUpdate}
+            type="password"
+            name="password"
+            placeholder="Change Password"
+            value={passwordState}
+          />
+        </Form.Group>
 
-
-function Account() {
-  return (
-    <Accordion defaultActiveKey="0">
-      <Card>
-        <Card.Header>
-          <CustomToggle eventKey="0">
-            Change Your Settings
-          </CustomToggle>
-        </Card.Header>
-        <Accordion.Collapse eventKey="0">
-          <Card.Body className="mb-3" >
-            <>
-              <InputGroup className="mb-5">
-                <FormControl
-                  size="lg"
-                  placeholder="Change You're Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon2"
-                />
-
-              </InputGroup>
-              <InputGroup className="mb-5">
-                <FormControl
-                  size="lg"
-                  placeholder="Change You're Email"
-                  aria-label="Email"
-                  aria-describedby="basic-addon2"
-                />
-                <InputGroup.Text id="basic-addon2">@Email.com</InputGroup.Text>
-              </InputGroup>
-              <InputGroup className="mb-5">
-                <FormControl
-                  size="lg"
-                  placeholder="Change You're Password"
-                  aria-label="Password"
-                  aria-describedby="basic-addon2"
-                />
-              </InputGroup>
-              <Stack gap={2} className="col-md-5 mx-auto">
-                <Button variant="warning fw-bold fs-4">Save changes</Button>
-                <Button variant="outline-warningfw-bold fs-4">Cancel</Button>
-              </Stack>
-            </>
-          </Card.Body>
-        </Accordion.Collapse>
-      </Card>
-    </Accordion>
+        <Button
+          type="submit"
+          variant="warning"
+          className="w-25 fs-5 fw-bold mt-5 mb-5 "
+        >
+          Submit Changes
+        </Button>
+      </Form>
+    </div>
   );
 };
 
