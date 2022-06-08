@@ -69,7 +69,7 @@ const Signup = () => {
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+          variant="warning"
         >
           Invalid signup, please try again.
         </Alert>

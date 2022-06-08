@@ -61,7 +61,7 @@ const Login = () => {
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+          variant="warning"
         >
           Invalid login, please try again.
         </Alert>

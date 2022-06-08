@@ -21,7 +21,7 @@ const Home = () => {
   const options = {
     styles: {
       colors: {
-        primary: "#212529",
+        primary: "#ffc107",
       },
     },
   };
