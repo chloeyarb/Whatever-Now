@@ -1,4 +1,4 @@
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError, ApolloError } = require('apollo-server-express');
 const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -94,35 +94,34 @@ const resolvers = {
     },
     editUser: async (parent, args, context) => {
       const { newName, newPassword, newEmail } = args;
-      console.log(newName, newPassword, newEmail)
+      let updatedUser, updatedPassword, updatedEmail;
       if (context.user) {
-
-
         if (newName) {
-          return User.findByIdAndUpdate(
+          updatedUser = await User.findByIdAndUpdate(
             { _id: context.user._id },
             { $set: { username: newName } },
             { new: true, runValidators: true }
           );
         }
-
         if (newPassword) {
-          return User.findOneAndUpdate(
+          updatedPassword = await User.findOneAndUpdate(
             { _id: context.user._id },
             { password: newPassword },
             { new: true, runValidators: true }
           );
         }
         if (newEmail) {
-          return User.findOneAndUpdate(
+          updatedEmail = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $set: { email: newEmail } },
             { new: true, runValidators: true }
           );
         }
 
-        throw new Error('something went wrong?');
-
+        if (!newName && !newPassword && !newEmail) {
+          throw new ApolloError('All fields are empty.');
+        }
+        return { updatedUser, updatedEmail, updatedPassword };
       }
       throw new AuthenticationError('You must be logged in to change your account settings.');
     }
