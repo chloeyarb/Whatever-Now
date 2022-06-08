@@ -132,7 +132,7 @@ const Home = () => {
           </div>
 
           <Form onSubmit={handlePostSubmit}>
-            <Form.Group className="mb-3 w-50" controlId="formGroupPost">
+            <Form.Group className="mb-3 w-75" controlId="formGroupPost">
               <Form.Control
                 type="text"
                 placeholder="Whatever you want to say..."
@@ -152,7 +152,8 @@ const Home = () => {
                     <Button
                       variant="warning"
                       type="submit"
-                      className="w-50 fs-5 fw-bold mt-3  button-color"
+                      className="fw-bold mt-3  button-color"
+                      id="upLoadBtn"
                       onClick={onClick}
                     >
                       Upload Picture
@@ -165,7 +166,8 @@ const Home = () => {
             <Button
               variant="outline-warning"
               type="submit"
-              className="w-25 fs-5 fw-bold  mb-5 button-color"
+              id="publishBtn"
+              className=" fw-bold  mb-5 button-color"
             >
               Publish Post
             </Button>
@@ -188,7 +190,6 @@ const Home = () => {
                   <Button
                     variant="warning"
                     type="button"
-                    className=""
                     onClick={(e) => handlePostLike(post._id, e)}
                   >
                     {post.likeCount}

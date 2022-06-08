@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2 */}
-          <div className="col-3 col-sm-3 contribCol">
+          <div className="col-3 col-sm-3 ">
             <h5 id="contributors">Contributors</h5>
             <ul
               className="list-unstyled text-dark fw-light"
