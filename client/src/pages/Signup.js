@@ -51,7 +51,7 @@ const Signup = () => {
   return (
     <div className="container mt-5 mb-5">
       <div className="row">
-        <h1 className="opacity-15 text-light">
+        <h1 className="opacity-50 text-light">
           Sign <span className="fw-light">up</span>...
         </h1>
       </div>
@@ -59,7 +59,7 @@ const Signup = () => {
         noValidate
         validated={validated}
         onSubmit={handleFormSubmit}
-        className="mt-5"
+        className="mt-3"
       >
         <Alert
           dismissible

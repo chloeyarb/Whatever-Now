@@ -6,25 +6,23 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="main-footer pt-5">
-      <div className="container">
-        <div className="row">
+    <div className="main-footer d-flex justify-content-center pt-5">
+      <div className=" ">
+        <div className="row ">
           {/* Column 1 */}
           <div className="col-3 col-sm-3 ">
             <Link to="/">
-              <img src="/img/Logo.png" alt="logo" style={{ width: "80%" }} />
+              <img src="/img/Logo.png" alt="logo" id="logoWN" />
             </Link>
           </div>
-          {/* Column 4 */}
-          <div className="col-3 col-sm-3 ">
-            <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
-              <FontAwesomeIcon icon={faGithub} className="iconStyle" />
-            </a>
-          </div>
+
           {/* Column 2 */}
-          <div className="col-3 col-sm-3">
-            <h5>Contributors</h5>
-            <ul className="list-unstyled text-dark fw-light">
+          <div className="col-3 col-sm-3 ">
+            <h5 id="contributors">Contributors</h5>
+            <ul
+              className="list-unstyled text-dark fw-light"
+              id="contributorList"
+            >
               <li>
                 <a href="https://github.com/chloeyarb" className="nounderline">
                   <span className="fw-normal">Chloe</span> Yarborough
@@ -60,9 +58,9 @@ const Footer = () => {
           </div>
 
           {/* Column 3 */}
-          <div className="col-3 col-sm-3">
-            <h5>WhateverNow</h5>
-            <ul className="list-unstyled ">
+          <div className="col-3 col-sm-3 " id="whatever">
+            <h5 id="whatevernowFooter">WhateverNow</h5>
+            <ul className="list-unstyled " id="whatevernowFooterList">
               <Link to="/" className="nounderline">
                 <li>Home</li>
               </Link>
@@ -80,9 +78,16 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
+          {/* Column 4 */}
+          <div className="col-3 col-sm-3 ">
+            <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
+              <FontAwesomeIcon icon={faGithub} className="iconStyle" />
+            </a>
+          </div>
         </div>
+
         {/* Footer Bottom */}
-        <div className="mt-2">
+        <div className="mt-2 d-flex justify-content-center" id="copy">
           <p className="text-xs-center">
             &copy;{new Date().getFullYear()} WhateverNow - All Rights Reserved
           </p>
