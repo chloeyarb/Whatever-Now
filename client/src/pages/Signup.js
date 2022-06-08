@@ -15,11 +15,11 @@ const Signup = () => {
   const [addUser] = useMutation(ADD_USER);
 
   useEffect(() => {
-    document.title = 'Sign Up'
+    document.title = "Sign Up";
   });
 
-  const handleUpdate = (action) => {
-    const { name, value } = action.target;
+  const handleUpdate = (e) => {
+    const { name, value } = e.target;
     setFormState({
       ...formState,
       [name]: value,
@@ -27,13 +27,13 @@ const Signup = () => {
   };
 
   // sign up form
-  const handleFormSubmit = async (action) => {
-    action.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-    const form = action.currentTarget;
+    const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      action.preventDefault();
-      action.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
     }
     try {
       const { data } = await addUser({

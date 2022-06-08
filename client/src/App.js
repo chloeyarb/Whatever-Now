@@ -49,8 +49,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/accountsettings" element={auth.LoggedIn() ? <Account /> : <Home/>} />
-            <Route path="/*" element={<Home/>}/>
+            <Route
+              path="/accountsettings"
+              element={auth.LoggedIn() ? <Account /> : <Home />}
+            />
+            <Route path="/*" element={<Home />} />
           </Routes>
         </div>
         <Footer />

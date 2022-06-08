@@ -4,11 +4,9 @@ import { EDIT_USER } from "../utils/mutations";
 import { Form, Alert } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
-
 const Account = () => {
-
   useEffect(() => {
-    document.title = 'Account Settings'
+    document.title = "Account Settings";
   });
 
   const [userState, setUserState] = useState("");
@@ -57,8 +55,6 @@ const Account = () => {
       console.log(err);
     }
   };
-
-
 
   return (
     <div className="container mt-5 mb-5">
@@ -116,7 +112,7 @@ const Account = () => {
           </Form.Label>
           <Form.Control
             onChange={passwordUpdate}
-            type="text"
+            type="password"
             name="password"
             placeholder="Change Password"
             value={passwordState}

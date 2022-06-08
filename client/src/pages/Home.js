@@ -14,8 +14,6 @@ import auth from "../utils/auth";
 import { Container, Col, Row } from "react-bootstrap";
 import { BsFillEmojiSunglassesFill } from "react-icons/bs";
 
-
-
 const Home = () => {
   const uploader = new Uploader({ apiKey: process.env.REACT_APP_UPLOADER_KEY });
   const options = {
@@ -44,9 +42,9 @@ const Home = () => {
 
   useEffect(() => {
     if (loggedIn) {
-      document.title = 'Feed'
+      document.title = "Feed";
     } else {
-    document.title = 'WhateverNow'
+      document.title = "WhateverNow";
     }
   });
 
@@ -126,9 +124,6 @@ const Home = () => {
                 so we will be sure to remove any nefarious or malicious posts
                 that might be published here.
               </p>
-
-              {/* <div>Are mission statement being that Media its-self has a week self- life at best, with that being because of the overabundance of news or that People’s attention span is not that long. So why not have a social media Page that reflex that. With our app “What-3ver Now” that is our goal to achieve. With a little thing where every post and convo for that week is burned after. The week starts Sunday at 12est and ends Sunday 12est. Not ever post will last a week full week. Now it might see like we are going after a “Free-Speech” app as many others have done with their disdain for how Twitter or others have there Policys for posting content, but I assure you here we do intend to “watch posts” to see if any nefarious or malicious posts or comments are poste
-</div> */}
             </Col>
           </Row>
         </>
@@ -152,7 +147,7 @@ const Home = () => {
                 className="postTextArea "
               />
             </Form.Group>
-            <Form.Group className="mb-3 w-50" controlId="formGroupPhoto" >
+            <Form.Group className="mb-3 w-50" controlId="formGroupPhoto">
               {uploadBtn && (
                 <UploadButton
                   uploader={uploader}

@@ -11,12 +11,12 @@ const Login = () => {
   const [login] = useMutation(LOGIN_USER);
 
   useEffect(() => {
-    document.title = 'Login'
+    document.title = "Login";
   });
 
   // update state based on form input changes
-  const handleUpdate = (action) => {
-    const { name, value } = action.target;
+  const handleUpdate = (e) => {
+    const { name, value } = e.target;
     setFormState({
       ...formState,
       [name]: value,
@@ -24,13 +24,13 @@ const Login = () => {
   };
 
   // submit form
-  const handleFormSubmit = async (action) => {
-    action.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-    const form = action.currentTarget;
+    const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      action.preventDefault();
-      action.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
     }
 
     try {
