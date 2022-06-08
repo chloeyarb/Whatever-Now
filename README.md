@@ -17,8 +17,6 @@
 * [Description](#description)
 * [Built With](#builtwith)
 * [Website](#website)
-* [Presentation](#presentation)
-* [GitHub Rep](#github-repo)
 * [Contribution](#contribution)
 
 ## Description
@@ -35,10 +33,7 @@ The posts have both text and photo upload features that will appear in the publi
 * Express
 * Apollo Server Express
 * Apollo Client
-* JWT
-* Dotenv
 * Mongoose
-* Concurrently
 
 
 ## Website
@@ -49,17 +44,10 @@ The posts have both text and photo upload features that will appear in the publi
 
 <img width=600px height=350px src="./client/public/img/footer.png" alt="genre page screenshot"></img>
 
-## Presentation
-[WhateverNow Slideshow](https://docs.google.com/presentation/d/1pkEjX24BsfcFGRJR71gzpBZbViNvAlxTuz4mjqxfLMM/edit#slide=id.p) 
-
-## GitHub Repo
-
-[WhateverNow Repo](https://github.com/chloeyarb/Whatever-Now)
-
 ## Contribution
 
-* Nicole Barranca
-* Chloe Yarborough
-* Alen Dunn
-* Robert Platzer
-* Nico D'Anna
+* [Nicole Barranca](https://github.com/NicoleBarranca)
+* [Chloe Yarborough](https://github.com/chloeyarb)
+* [Alen Dunn](https://github.com/adunny)
+* [Robert Platzer](https://github.com/Cherboi)
+* [Nico D'Anna](https://github.com/NacoandCheese)
