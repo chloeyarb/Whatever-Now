@@ -51,7 +51,7 @@ const Signup = () => {
   return (
     <div className="container mt-5 mb-5">
       <div className="row">
-        <h1 className="opacity-25 text-light">
+        <h1 className="opacity-15 text-light">
           Sign <span className="fw-light">up</span>...
         </h1>
       </div>

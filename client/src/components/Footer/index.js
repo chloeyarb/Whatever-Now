@@ -15,24 +15,46 @@ const Footer = () => {
               <img src="/img/Logo.png" alt="logo" style={{ width: "80%" }} />
             </Link>
           </div>
+          {/* Column 4 */}
+          <div className="col-3 col-sm-3 ">
+            <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
+              <FontAwesomeIcon icon={faGithub} className="iconStyle" />
+            </a>
+          </div>
           {/* Column 2 */}
           <div className="col-3 col-sm-3">
             <h5>Contributors</h5>
             <ul className="list-unstyled text-dark fw-light">
               <li>
-                <span className="fw-normal">Chloe</span> Yarborough
-              </li>{" "}
-              <li>
-                <span className="fw-normal">Robert</span> Platzer Jr
-              </li>{" "}
-              <li>
-                <span className="fw-normal">Alen</span> Dunn
-              </li>{" "}
-              <li>
-                <span className="fw-normal">Nico</span> D'Anna
+                <a href="https://github.com/chloeyarb" className="nounderline">
+                  <span className="fw-normal">Chloe</span> Yarborough
+                </a>
               </li>
               <li>
-                <span className="fw-normal">Nicole</span> Barranca
+                <a href="https://github.com/Cherboi" className="nounderline">
+                  <span className="fw-normal">Robert</span> Platzer Jr
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/adunny" className="nounderline">
+                  <span className="fw-normal">Alen</span> Dunn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/NacoandCheese"
+                  className="nounderline"
+                >
+                  <span className="fw-normal">Nico</span> D'Anna
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/NicoleBarranca"
+                  className="nounderline"
+                >
+                  <span className="fw-normal ">Nicole</span> Barranca
+                </a>
               </li>
             </ul>
           </div>
@@ -57,12 +79,6 @@ const Footer = () => {
                 <li>Logout</li>
               </Link>
             </ul>
-          </div>
-          {/* Column 4 */}
-          <div className="col-3 col-sm-3 mt-3">
-            <a href="https://github.com/chloeyarb/Whatever-Now" id="icon">
-              <FontAwesomeIcon icon={faGithub} className="iconStyle" />
-            </a>
           </div>
         </div>
         {/* Footer Bottom */}
