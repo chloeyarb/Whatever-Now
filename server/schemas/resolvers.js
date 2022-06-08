@@ -107,9 +107,9 @@ const resolvers = {
         }
 
         if (newPassword) {
-          return User.findByIdAndUpdate(
+          return User.findOneAndUpdate(
             { _id: context.user._id },
-            { $set: { password: newPassword } },
+            { password: newPassword },
             { new: true, runValidators: true }
           );
         }
