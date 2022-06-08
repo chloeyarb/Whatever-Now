@@ -195,10 +195,9 @@ const Home = () => {
                     type="button"
                     onClick={(e) => handlePostLike(post._id, e)}
                   >
-                    {post.likeCount}
+                    {post.likeCount} <BsFillEmojiSunglassesFill />
                   </Button>
                 </Card.Body>
-                
               </Card>
             ))}
 
