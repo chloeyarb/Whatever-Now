@@ -36,7 +36,7 @@
   height: 70vh;
   background-size: cover;
   background-position: center;
-  background-image: url("/Users/nicolebarranca/Desktop/Whatever-Now/client/public/img/P.jpg");
+  background-image: url("../public/img/P.jpg");
   /* z-index: 0; */
   display: flex;
   justify-content: center;
